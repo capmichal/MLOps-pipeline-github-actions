@@ -73,7 +73,7 @@ grid_results = grid_search_forecaster(
                         metric      = 'mean_squared_error',
                         initial_train_size    = int(len(train_data)*0.5),
                         allow_incomplete_fold = True,
-                        return_best = True,
+                        return_best = True, # return only ONE best grid
                         verbose     = False
                     )
 
