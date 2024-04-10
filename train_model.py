@@ -40,7 +40,7 @@ data['x'] = [datetime.utcfromtimestamp(x).strftime('%Y-%m-%d %H:%M:%S') for x in
 data['x'] = pd.to_datetime(data['x'])
 
 # renaming columns
-data.columns = ['date', 'transactions']
+data.columns = ['date', 'transactions'] # way better than df.rename(XXXXX)
 
 # Get hourly data
 data['date'] = data['date'].dt.round('H')
