@@ -43,6 +43,7 @@ def forecast(num_predictions = 168, return_predictions = True):
             freq = '1H'
             )
 
+    # sytuacje gdzie już używaliśmy naszego wytrenowanego modelu to stworzenia jakiejś predykcji
     elif last_prediction_date > last_training_date:
         # In this case, we must take into account the differences between the last forecast date and add the difference to the number of days to extract.
         dif_seg= last_prediction_date - last_training_date
@@ -78,7 +79,7 @@ def forecast(num_predictions = 168, return_predictions = True):
         pred = round(pred, 4)
 
         result = engine.execute(f"INSERT INTO predictions (timestamp, prediction_date,  prediccion)
-            VALUES('{timestamp}', '{fecha_pred}', '{pred}')
+            VALUES('{timestamp}', '{fecha_pred}', '{pred}') 
             ON CONFLICT (prediction_date) DO UPDATE
             SET timestamp = '{timestamp}',
                 prediccion = '{pred}'
