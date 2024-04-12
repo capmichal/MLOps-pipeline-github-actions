@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 app = FastAPI()
 @app.post("/forecast")
-def forecast(num_predictions = 168, return_predictions = True):
+def forecast(num_predictions = 20, return_predictions = True):
 
     import pandas as pd
     import requests
@@ -50,7 +50,7 @@ def forecast(num_predictions = 168, return_predictions = True):
         dif_seg= last_prediction_date - last_training_date
         hours_extract = num_predictions + dif_seg.seconds//3600
 
-        num_predictions = dif_seg.seconds//3600
+        # num_predictions = dif_seg.seconds//3600
         predictions = forecaster_rf.predict(hours_extract)
 
         # we use only NEW predictions
