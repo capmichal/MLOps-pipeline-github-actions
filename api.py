@@ -45,22 +45,25 @@ def forecast(num_predictions = 168, return_predictions = True):
 
     # sytuacje gdzie już używaliśmy naszego wytrenowanego modelu to stworzenia jakiejś predykcji
     elif last_prediction_date > last_training_date:
+
         # In this case, we must take into account the differences between the last forecast date and add the difference to the number of days to extract.
         dif_seg= last_prediction_date - last_training_date
         hours_extract = num_predictions + dif_seg.seconds//3600
 
-        # we should make use of hours_extract now, to give MORE predictions than we already have
-        # NIE MAMY odświeżonego modelu, przetrenowanego na nowych danych, ale musimy dać nowe predykcje
-        # więc po prostu dajemy WIĘCEJ predykcji, dalej wybiegamy w przyszłosć
-        predictions = forecaster_rf.predict(num_predictions)
-        # I get the last predictions
-        predictions = predictions[-num_predictions:]
+        num_predictions = dif_seg.seconds//3600
+        predictions = forecaster_rf.predict(hours_extract)
+
+        # we use only NEW predictions
+        predictions = predictions[-(num_predictions):]
+
 
         fechas = pd.date_range(
             start = last_prediction_date.strftime('%Y-%m-%d %H:%M:%S'),
             periods = num_predictions,
             freq = '1H'
             )
+        
+    # edge case scernarios only ?
     else:
         # If last training > last predictions
         predictions = forecaster_rf.predict(num_predictions)
