@@ -32,7 +32,7 @@ def forecast(num_predictions = 168, return_predictions = True):
     query.close()
 
     # If there is no last date in the databse or training > database, I read the last date from training
-    if  (last_prediction_date is None) or (last_prediction_date > last_training_date):
+    if  (last_prediction_date is None) or (last_prediction_date < last_training_date):
 
         # As there is no predictions, I make the predictions
         predictions = forecaster_rf.predict(num_predictions)
