@@ -85,11 +85,11 @@ def forecast(num_predictions = 168, return_predictions = True):
         timestamp, fecha_pred, pred = upload_day
         pred = round(pred, 4)
 
-        result = engine.execute(f"INSERT INTO predictions (timestamp, prediction_date,  prediccion) \
+        result = engine.execute(f"INSERT INTO predictions (timestamp, prediction_date,  prediction) \
             VALUES('{timestamp}', '{fecha_pred}', '{pred}') \
             ON CONFLICT (prediction_date) DO UPDATE \
             SET timestamp = '{timestamp}', \
-                prediccion = '{pred}' \
+                prediction = '{pred}' \
             ;")
         result.close()
     if return_predictions:
