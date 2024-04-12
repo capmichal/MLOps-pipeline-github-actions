@@ -11,4 +11,11 @@ When NOT to use this:
 - many models you must put into production, or a few but **complex** models. Github actions machines do not provide enough computing power to train your models
 
 
-TODO
+
+
+
+
+NEPTUNE AI ARTICLE FIXES
+- zdezaktualizowal sie sposob trenowania - zmieniona zew. biblioteka
+- if statements wrong <> side
+- not using hours_extract variable properly
