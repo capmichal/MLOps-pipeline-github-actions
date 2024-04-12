@@ -48,6 +48,10 @@ def forecast(num_predictions = 168, return_predictions = True):
         # In this case, we must take into account the differences between the last forecast date and add the difference to the number of days to extract.
         dif_seg= last_prediction_date - last_training_date
         hours_extract = num_predictions + dif_seg.seconds//3600
+
+        # we should make use of hours_extract now, to give MORE predictions than we already have
+        # NIE MAMY odświeżonego modelu, przetrenowanego na nowych danych, ale musimy dać nowe predykcje
+        # więc po prostu dajemy WIĘCEJ predykcji, dalej wybiegamy w przyszłosć
         predictions = forecaster_rf.predict(num_predictions)
         # I get the last predictions
         predictions = predictions[-num_predictions:]
