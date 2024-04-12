@@ -8,3 +8,4 @@ skforecast
 neptune
 matplotlib
 fastapi
+uvicorn
