@@ -24,3 +24,6 @@ NEPTUNE AI ARTICLE FIXES
 REQUIREMENT EXTERNAL
 sudo apt-get install libpq-dev
 
+how to properly build this Dockerfile:
+``` docker build . -t mlops_app:v0.1 --build-arg URI=$URI ```
+
