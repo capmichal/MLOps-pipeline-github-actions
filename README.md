@@ -19,3 +19,8 @@ NEPTUNE AI ARTICLE FIXES
 - zdezaktualizowal sie sposob trenowania - zmieniona zew. biblioteka
 - if statements wrong <> side
 - not using hours_extract variable properly
+
+
+REQUIREMENT EXTERNAL
+sudo apt-get install libpq-dev
+
