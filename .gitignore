@@ -1,0 +1,12 @@
+#ignore everything inside .gitignore directory
+/*
+
+#but python files / Dockerfile
+!*.py
+!*.txt
+!*.md
+!Dockerfile
+!.gitignore
+
+# but some directories
+!.github
