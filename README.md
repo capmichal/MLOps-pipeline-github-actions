@@ -27,3 +27,7 @@ sudo apt-get install libpq-dev
 how to properly build this Dockerfile:
 ``` docker build . -t mlops_app:v0.1 --build-arg URI=$URI ```
 
+
+#### GCP APPROACH TO CONTINUOUS DEPLOYMENT PIPELINE WITH CLOUD AND GITHUB
+- each github push will put new docker image (API) to docker registry Google Cloud Build (AWS ECR)
+- Google Cloud Run will deploy contenerized API to a service that scales down to 0 automatically, assiging required number of virtual machines (GCP Cloud Run can scale to 0 virtual machines running, which is something that AWS AppRunner cannot do)
