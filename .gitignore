@@ -7,6 +7,7 @@
 !*.md
 !Dockerfile
 !.gitignore
+!*.pickle
 
 # but some directories
 !.github
