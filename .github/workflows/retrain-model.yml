@@ -1,0 +1,30 @@
+name: Retrain model to achieve better result 
+
+on:
+  repository_dispatch:
+    types: [execute-retrain]
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Configure Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install necessary libraries
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Python Script
+      env:
+        URI: ${{ secrets.URI }}
+        NEPTUNE_API_KEY: ${{ secrets.NEPTUNE_API_KEY }}
+        NEPTUNE_PROJECT: ${{ secrets.NEPTUNE_PROJECT }}
+      run: train_model.py
