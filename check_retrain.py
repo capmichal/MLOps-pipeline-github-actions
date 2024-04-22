@@ -56,4 +56,4 @@ if mae > max_mae:
     payload = {'ref': "master"}
 
     resp = requests.post(url, headers=headers, json=payload)
-    print(resp.json())
+    #print(resp.json())
