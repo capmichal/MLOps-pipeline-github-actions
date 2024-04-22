@@ -46,7 +46,6 @@ data.columns = ['date', 'transactions'] # way better than df.rename(XXXXX)
 data['date'] = data['date'].dt.round('H')
 grouped_data = data.groupby('date').sum().reset_index()
 
-
 # additional frequency settings missed from original neptune.ai code
 grouped_data = grouped_data.set_index('date')
 grouped_data = grouped_data.asfreq("H")
@@ -54,6 +53,10 @@ grouped_data = grouped_data.asfreq("H")
 # Train test split
 train_data = grouped_data[ -n_datos_entrenar:-steps]
 test_data  = grouped_data[-steps:]
+
+train_data = train_data.fillna(method='ffill')
+test_data = test_data.fillna(method='ffill')
+
 
 # Define forecaster
 forecaster_rf = ForecasterAutoreg(
