@@ -49,5 +49,11 @@ predictions_data = list(data.prediction)
 mae = mean_absolute_error(actual_data, predictions_data)
 
 if mae > max_mae:
-    url = f'https://api.github.com/repos/{user}/{repo}/dispatches'
-    resp = requests.post(url, headers={'Authorization': f'token  {GITHUB_TOKEN}'}, data = json.dumps({'event_type': "execute-retrain"}))
+    print(mae)
+
+    url = f'https://api.github.com/repos/{user}/{repo}/actions/workflows/retrain-model.yml/dispatches'
+    headers = {'Authorization': f'Bearer {GITHUB_TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
+    payload = {'ref': "master"}
+
+    resp = requests.post(url, headers=headers, json=payload)
+    print(resp.json())

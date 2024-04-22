@@ -1,8 +1,8 @@
 name: Retrain model to achieve better result 
 
 on:
-  repository_dispatch:
-    types: [execute-retrain]
+  workflow_dispatch:
+
 
 jobs:
   run_script:
