@@ -7,6 +7,10 @@ import os
 from sklearn.metrics import mean_absolute_error
 
 
+user = "capmichal"
+repo = "MLOps-pipeline-github-actions"
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+
 max_mae = 6 # max mean absolute error that we allow our model to produce
 n_observations = 48 
 
@@ -45,5 +49,5 @@ predictions_data = list(data.prediction)
 mae = mean_absolute_error(actual_data, predictions_data)
 
 if mae > max_mae:
-    # call github actions to retrain the model
-    pass
+    url = f'https://api.github.com/repos/{user}/{repo}/dispatches'
+    resp = requests.post(url, headers={'Authorization': f'token  {GITHUB_TOKEN}'}, data = json.dumps({'event_type': "execute-retrain"}))
