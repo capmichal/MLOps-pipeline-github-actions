@@ -1,3 +1,5 @@
+### How to Build MLOps Pipelines with GitHub Actions
+
 #### PROS AND CONS of using Github Actions as MLOPs workflows
 
 Not many models in production = cost of learning and using MLOps tools > benefits it returns
@@ -16,6 +18,19 @@ When NOT to use this:
 - Automate model retrain with GitHub Actions - setup a Github actions workflow that will automatically evaluate model performance (predictions vs reality) and retrain/keep the model.
 
 
-###### Properly building Dockerfile to handle env variables
+##### Properly building Dockerfile to handle env variables
 how to properly build this Dockerfile:
 ``` docker build . -t mlops_app:v0.1 --build-arg URI=$URI ```
+
+##### Setup requirements
+- Database storing our predictions and reality to compare (AWS RDS was used in my project)
+- NeptuneAI account to store information about all models
+- Cloud Provider account to setup CI/CD with dockerized api
+
+
+##### Installation
+- ``` python3 -m venv venv ```
+- ``` source venv/bin/activate ```
+- ``` pip install -r requirements.txt ```
+
+
