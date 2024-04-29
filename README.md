@@ -1,4 +1,4 @@
-### PROS AND CONS of using Github Actions as MLOPs workflows
+#### PROS AND CONS of using Github Actions as MLOPs workflows
 
 Not many models in production = cost of learning and using MLOps tools > benefits it returns
 In such case there is no need to learn and include new concepts, we can build simple (but effective) MLOps pipelines
@@ -7,7 +7,7 @@ with one of the most used tools in software development: Github.
 When NOT to use this:
 - many models you must put into production, or a few but **complex** models. Github actions machines do not provide enough computing power to train your models
 
-##### Pipeline explained step by step
+#### Pipeline explained step by step
 - Setup data extraction pipeline with GitHub Actions - the number of bitcoin transactions per hour. 
 - Build model-train and selection pipeline with GitHub Actions - for model evaluation / artifacts storage we could use Neptune.ai.
 - Wrap the model as an API - FastAPI will allow us to use model as external API that will put predicted data in database hosted on AWS RDS.
